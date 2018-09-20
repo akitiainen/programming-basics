@@ -9,12 +9,18 @@ namespace ifTask2
             Console.WriteLine("This program sorts out if the number is even or odd");
             Console.Write("Input a number: ");
             string userInput = Console.ReadLine();
-            int number = int.Parse(userInput);
+            int number = 0;
+            bool isNumber = int.TryParse(userInput, out number);
 
-            if (number % 2 == 0)
-                Console.WriteLine($"Number {number} is even");
+            if (isNumber)
+            {
+                if (number % 2 == 0)
+                    Console.WriteLine($"Number {number} is even");
+                else
+                    Console.WriteLine($"Number {number} is odd");
+            }
             else
-                Console.WriteLine($"Number {number} is odd");
+                Console.WriteLine("Wrong input!");
         }
     }
 }
