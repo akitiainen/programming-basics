@@ -17,10 +17,22 @@ namespace ifTask3
                 if (number == 0)
                     Console.WriteLine("Your number is zero!");
                 else if (number < 0)
-                    Console.WriteLine($"Your number {number} is negative!");
+                {
+                    if (number % 2 == 0)
+                        Console.WriteLine($"Your number {number} is negative and even!");
+                    else
+                        Console.WriteLine($"Your number {number} is negative and odd!");
+                }
                 else
-                    Console.WriteLine($"Your number {number} is positive!");
+                {
+                    if (number % 2 == 0)
+                        Console.WriteLine($"Your number {number} is positive and even!");
+                    else
+                        Console.WriteLine($"Your number {number} is positive and odd!");
+                }
             }
+            else
+                Console.WriteLine("Wrong input!");
         }
     }
 }
