@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfTask LipunHinta", "IfTask LipunHinta\IfTask LipunHinta.csproj", "{487EAD98-655D-4CBB-9C14-C1F46A78788D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{487EAD98-655D-4CBB-9C14-C1F46A78788D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{487EAD98-655D-4CBB-9C14-C1F46A78788D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{487EAD98-655D-4CBB-9C14-C1F46A78788D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{487EAD98-655D-4CBB-9C14-C1F46A78788D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCF66A81-E293-4681-9361-5C3D2B32CA8F}
+	EndGlobalSection
+EndGlobal
