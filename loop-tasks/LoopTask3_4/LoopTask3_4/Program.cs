@@ -36,7 +36,7 @@ namespace LoopTask3_4
                 {
                     for (i = 0; i >= number; i--)
                     {
-                        negSum -= i;
+                        negSum += i;
                     }
                     Console.WriteLine($"Negatiivisten lukujen summa: {negSum}");
                 }
