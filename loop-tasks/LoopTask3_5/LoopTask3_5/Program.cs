@@ -15,7 +15,7 @@ namespace LoopTask3_5
             number = int.Parse(Console.ReadLine());
             if (number > 0)
             {
-                int i = 1;
+                int i = 0;
                 while (i <= number)
                 {
                     if (i % 2 == 0)
@@ -31,16 +31,16 @@ namespace LoopTask3_5
             }
             else
             {
-                int i = -1;
+                int i = 0;
                 while (i >= number)
                 {
                     if (i % 2 == 0)
                     {
-                        evenSum = evenSum - i; //evenSum += i;
+                        evenSum = evenSum + i; //evenSum += i;
                     }
                     else
                     {
-                        oddSum = oddSum - i;
+                        oddSum = oddSum + i;
                     }
                     i--;
                 }
