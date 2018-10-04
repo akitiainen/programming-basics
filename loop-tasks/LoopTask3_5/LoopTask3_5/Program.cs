@@ -7,7 +7,6 @@ namespace LoopTask3_5
         static void Main(string[] args)
         {
             int number = 0;
-            int i = 1;
             int evenSum = 0;
             int oddSum = 0;
 
@@ -16,6 +15,7 @@ namespace LoopTask3_5
             number = int.Parse(Console.ReadLine());
             if (number > 0)
             {
+                int i = 1;
                 while (i <= number)
                 {
                     if (i % 2 == 0)
@@ -27,26 +27,27 @@ namespace LoopTask3_5
                         oddSum = oddSum + i;
                     }
                     i++;
-                    break;
                 }
             }
             else
             {
+                int i = -1;
                 while (i >= number)
                 {
                     if (i % 2 == 0)
                     {
-                        evenSum = evenSum - i;
+                        evenSum = evenSum - i; //evenSum += i;
                     }
                     else
                     {
                         oddSum = oddSum - i;
                     }
-                    i++;
+                    i--;
                 }
             }
             Console.WriteLine($"The sum of even numbers is {evenSum}");
             Console.WriteLine($"The sum of odd numbers is {oddSum}");
+
         }
     }
 }
