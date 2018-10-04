@@ -14,7 +14,7 @@ namespace loopTask4_1
             Console.WriteLine("#\tRND\tSQRT");
             for (int i = 0; i < 10; i++)
             {
-                rndNumber = rnd.Next(1, 100);
+                rndNumber = rnd.Next(1, 10);
                 Console.WriteLine($"{i + 1}.\t{rndNumber}\t{Math.Sqrt(rndNumber)}");
             }
         }
