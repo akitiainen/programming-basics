@@ -21,7 +21,7 @@ namespace LoopTask4_2
             Console.WriteLine("\n");
             for (i = 1; i <= 9; i++)
             {
-                Console.Write("{0} * {1} = {2} \n", number, i, number * i);
+                Console.Write($"{number} * {i} = {number*i} \n");
             }
             
         }
