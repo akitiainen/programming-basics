@@ -26,6 +26,7 @@ namespace LoopTask4_4
                     kl = kl + 1;
                 }
             }
+            Console.WriteLine("\n");
             Console.WriteLine($"Kruuna heitettiin {kr} kertaa");
             Console.WriteLine($"Klaava heitettiin {kl} kertaa");
         }
