@@ -15,7 +15,7 @@ namespace LoopTask4_6
                 if(rndNumber == 6)
                 {
                     counter = counter + 1;
-                }Console.Write($"{rndNumber} ");
+                }
                 
             }
             Console.WriteLine($"Kuutonen heitettiin {counter} kertaa.");
