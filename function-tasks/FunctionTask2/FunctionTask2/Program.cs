@@ -8,7 +8,7 @@ namespace FunctionTask2
         {
             int x, y;
             Intro(out x, out y);
-            Console.WriteLine(SmallerNumber(x,y));
+            PrintData(SmallerNumber(x,y));
         }
 
         static void Intro(out int num01, out int num02)
@@ -27,6 +27,11 @@ namespace FunctionTask2
                 return $"Number {b} is smaller than number {a}";
             else
                 return "Numbers have the same value";
+        }
+
+        static void PrintData(string data)
+        {
+            Console.WriteLine(data);
         }
     }
 }
