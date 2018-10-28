@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace RepetitionTask1
+namespace RepetitionTask2
 {
     class Program
     {
