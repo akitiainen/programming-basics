@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepetitionTask3", "RepetitionTask3\RepetitionTask3.csproj", "{1B9C8E51-E98C-48A6-AB52-385CD1C31B1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B9C8E51-E98C-48A6-AB52-385CD1C31B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B9C8E51-E98C-48A6-AB52-385CD1C31B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B9C8E51-E98C-48A6-AB52-385CD1C31B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B9C8E51-E98C-48A6-AB52-385CD1C31B1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {831E59C3-38FC-43B4-A1ED-78A708F48352}
+	EndGlobalSection
+EndGlobal
