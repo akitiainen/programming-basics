@@ -6,19 +6,36 @@ namespace FunctionTask3
     {
         static void Main(string[] args)
         {
-            int x;
-            Intro(out x);
+            NumberFromRange(0, 50);
+            Print();
         }
 
-        static void Intro(out int num)
+        static int NumberFromRange(int lowerBound, int upperBound)
         {
-            Console.Write("Input a number between 0-50: ");
-            while (!int.TryParse(Console.ReadLine(), out num))
+            bool isNumber;
+            int input;
+
+            do
             {
-                Console.Clear();
-                Console.WriteLine("Input error");
-                Console.Write("Input a number: ");
+                Console.Write($"Syötä luku alueelta {lowerBound} ... {upperBound}: ");
+                isNumber = int.TryParse(Console.ReadLine(), out input);
+
+                if (isNumber && input >= lowerBound && input <= upperBound)
+                {
+                    return input;
+                }
+                else
+                {
+                    Console.WriteLine($"väärä syöte!");
+                }
+
             }
+            while (true);
+        }
+
+        static void Print()
+        {
+            Console.WriteLine("Lukusi on kelvollinen!");
         }
     }
 }
