@@ -34,7 +34,7 @@ namespace ChartTask_Lotto
             for (int i = 0; i < lottoNumbers.Length; i++)
             {
                 if(lottoNumbers[i] == 1)
-                    Console.Write($"{i+1}\t");
+                    Console.Write($"{i+1} ");
                
             }
 
