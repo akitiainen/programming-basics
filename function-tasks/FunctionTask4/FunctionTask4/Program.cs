@@ -13,11 +13,16 @@ namespace FunctionTask4
 
         static int LargestNumber(ref int indx)
         {
+            int input;
             int largestNumber = 0;
             for (int i = 0; i < 10; i++)
             {
                 Console.Write($"{i+1}.");
-                int input = int.Parse(Console.ReadLine());
+                while (!int.TryParse(Console.ReadLine(), out input))
+                {
+                    Console.WriteLine("Väärä syöte, syötä luku!");
+                    Console.Write($"{i + 1}.");
+                }
                 if (input < 0)
                 {
                     Console.WriteLine("väärä syöte, syötä positiivinen luku");
