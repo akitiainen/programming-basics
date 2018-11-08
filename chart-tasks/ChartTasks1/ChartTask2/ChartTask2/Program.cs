@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChartTask2
+namespace ArrayTask2
 {
     class Program
     {
