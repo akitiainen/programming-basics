@@ -12,7 +12,7 @@ namespace StringTask3
             int letterCounter = 0;
             for (int i = 0; i < S.Length; i++)
             {
-                S.IndexOf(S[i]);
+                
                 if (S[i].ToString() == "L")
                 {
                     Console.WriteLine(S[i]);
