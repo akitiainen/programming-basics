@@ -6,16 +6,17 @@ namespace StringTask4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Write something ");
+            Console.WriteLine("Kirjoita jotain: ");
             string input = Console.ReadLine();
-            string tupni = input;
-
             for (int i = 0; i < input.Length; i++)
             {
-                string x = input[i].ToString();
-                tupni.Insert(input.Length-1-i, x);
+                if (input[i] != input[input.Length-1-i])
+                {
+                    Console.WriteLine($"{input} ei ole palindromi!");
+                    break;
+                }
             }
-            Console.WriteLine(tupni);
+            Console.WriteLine($"{input} on palindromi!");
         }
     }    
 }
