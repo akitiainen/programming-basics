@@ -8,15 +8,29 @@ namespace StringTask4
         {
             Console.WriteLine("Kirjoita jotain: ");
             string input = Console.ReadLine();
-            for (int i = 0; i < input.Length; i++)
+            string inputTmp = input.ToUpper();
+            for (int i = 0; i < inputTmp.Length; i++)
             {
-                if (input[i] != input[input.Length-1-i])
+                if (char.IsSeparator(inputTmp[i]))
+                {
+                    inputTmp.Trim(inputTmp[i]);
+                }
+            }
+            Console.WriteLine(inputTmp);
+
+            for (int i = 0; i < inputTmp.Length; i++)
+            {
+                //if (char.IsSeparator(input[i]))
+                
+                    
+                
+
+                if (inputTmp[i] != inputTmp[inputTmp.Length - 1 - i])
                 {
                     Console.WriteLine($"{input} ei ole palindromi!");
                     break;
                 }
             }
-            Console.WriteLine($"{input} on palindromi!");
         }
     }    
 }
