@@ -16,10 +16,11 @@ namespace ArrayTask3_2
 
             for (int x = 0; x < 10; x++)
             {
+                Console.WriteLine();
                 for (int y = 0; y < 20; y++)
                 {
                     arrRaffle[x, y] = rnd.Next(101);
-                    Console.WriteLine($"{x} {y}\t{arrRaffle[x, y]:d2} ");
+                    Console.WriteLine($"{x} {y}\t{arrRaffle[x, y]:d2}  ");
                 }
             }
             
