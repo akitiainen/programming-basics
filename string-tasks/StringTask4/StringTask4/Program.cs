@@ -9,26 +9,18 @@ namespace StringTask4
             Console.WriteLine("Kirjoita jotain: ");
             string input = Console.ReadLine();
             string inputTmp = input.ToUpper();
-            for (int i = 0; i < inputTmp.Length; i++)
-            {
-                if (char.IsSeparator(inputTmp[i]))
-                {
-                    inputTmp.Trim(inputTmp[i]);
-                }
-            }
-            Console.WriteLine(inputTmp);
+            inputTmp = inputTmp.Replace(" ", "");
 
             for (int i = 0; i < inputTmp.Length; i++)
             {
-                //if (char.IsSeparator(input[i]))
-                
-                    
-                
-
                 if (inputTmp[i] != inputTmp[inputTmp.Length - 1 - i])
                 {
                     Console.WriteLine($"{input} ei ole palindromi!");
                     break;
+                }
+                else if(i == inputTmp.Length-1)
+                {
+                    Console.WriteLine($"{input} on palindromi");
                 }
             }
         }
