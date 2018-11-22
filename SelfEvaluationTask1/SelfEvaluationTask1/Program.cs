@@ -10,7 +10,7 @@ namespace SelfEvaluationTask1
             int [] numbers = new int[] {2,5,10,7,3};
             for (int i = 0; i < numbers.Length; i++)
             {
-                PrintStars(numbers[i]);
+                Console.WriteLine(GetStars(numbers[i]));
             }
             
         }
@@ -22,6 +22,16 @@ namespace SelfEvaluationTask1
                 Console.Write("*");
             }
             Console.WriteLine();
+        }
+
+        static string GetStars(int length)
+        {
+            string returnStars = "";
+            for (int i = 0; i < length; i++)
+            {
+                returnStars = $"{returnStars}*";
+            }
+            return returnStars;
         }
     }
 }
