@@ -7,16 +7,9 @@ namespace HetuTask
         static void Main(string[] args)
         {
             string strHetu = Intro();
-            string check = HetuChecker(strHetu);
-            Console.WriteLine($"{strHetu} Tulostetaan tarkaste: {check}");
             DateChecker(strHetu);
-            string strHetuTmp = strHetu.Substring(9);
-            if (check == strHetuTmp)
-            {
-                Console.WriteLine("true");
-            }
-            else
-                Console.WriteLine("false");
+            char check = HetuChecker(strHetu);
+            Console.WriteLine($"Hetu: {strHetu} Tarkaste: {check}");
         }
 
         static string Intro()
@@ -25,15 +18,14 @@ namespace HetuTask
             return Console.ReadLine();
         }
 
-        static string HetuChecker(string strHetu)
+        static char HetuChecker(string strHetu)
         {
             string checkMark = "0123456789ABCDEFHJKLMNPRSTUVWXY";
-
             string strHetuTmp = strHetu.Remove(6, 1);
             int hetuCheck = int.Parse(strHetuTmp.Remove(9));
             //Console.WriteLine(hetuCheck);
             hetuCheck = hetuCheck % 31;
-            string x = checkMark[hetuCheck];
+            char x = checkMark[hetuCheck];
             return x;
         }
 
