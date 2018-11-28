@@ -8,24 +8,24 @@ namespace HetuTask
         {
             string strHetu = Intro();
             DateChecker(strHetu);
-            char check = HetuChecker(strHetu);
-            Console.WriteLine($"Hetu: {strHetu} Tarkaste: {check}");
+            string check = HetuChecker(strHetu);
+            bool isReal = (FinalChecker(check, strHetu.Substring(10))) ;
+            PrintData(isReal);
         }
 
         static string Intro()
         {
-            Console.WriteLine("Syötä sosiaaliturvatunnus: ");
+            Console.Write("Syötä sosiaaliturvatunnus: ");
             return Console.ReadLine();
         }
-
-        static char HetuChecker(string strHetu)
+        
+        static string HetuChecker(string strHetu)
         {
             string checkMark = "0123456789ABCDEFHJKLMNPRSTUVWXY";
             string strHetuTmp = strHetu.Remove(6, 1);
             int hetuCheck = int.Parse(strHetuTmp.Remove(9));
-            //Console.WriteLine(hetuCheck);
             hetuCheck = hetuCheck % 31;
-            char x = checkMark[hetuCheck];
+            string x = checkMark[hetuCheck].ToString();
             return x;
         }
 
@@ -43,6 +43,22 @@ namespace HetuTask
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        static bool FinalChecker(string letter1, string letter2)
+        {
+            if (letter2 == letter1)
+                return true;
+            else
+                return false;
+        }
+
+        static void PrintData(bool data)
+        {
+            if(data)
+                Console.WriteLine("Hetu on oikea!");
+            else
+                Console.WriteLine("Hetu on väärä!");
         }
     }
 }
