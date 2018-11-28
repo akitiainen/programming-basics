@@ -6,11 +6,18 @@ namespace HetuTask
     {
         static void Main(string[] args)
         {
-            string strHetu = Intro();
-            DateChecker(strHetu);
-            string check = HetuChecker(strHetu);
-            bool isReal = (FinalChecker(check, strHetu.Substring(10))) ;
-            PrintData(isReal);
+            do
+            {
+                string strHetu = Intro();
+                if (DateChecker(strHetu))
+                {
+                    string check = HetuChecker(strHetu);
+                    bool isReal = (FinalChecker(check, strHetu.Substring(10)));
+                    PrintData(isReal);
+                    break;
+                }
+            }
+            while (true);
         }
 
         static string Intro()
@@ -18,7 +25,15 @@ namespace HetuTask
             Console.Write("Syötä sosiaaliturvatunnus: ");
             return Console.ReadLine();
         }
-        
+
+        /// <summary>
+        /// tarkastemerkki tallennettu stringiin checkMark,
+        /// strHetuTmp:ssä poistettu välimerkki,
+        /// hetuCheck laskee tarkastemerkin,
+        /// tarkaste merkki tallentuu stringiin x
+        /// </summary>
+        /// <param name="strHetu"></param>
+        /// <returns></returns>
         static string HetuChecker(string strHetu)
         {
             string checkMark = "0123456789ABCDEFHJKLMNPRSTUVWXY";
@@ -29,7 +44,12 @@ namespace HetuTask
             return x;
         }
 
-        static void DateChecker(string A)
+        /// <summary>
+        /// tarkistaa onko hetun päivämäärä mahdollinen
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        static bool DateChecker(string A)
         {
             int day = int.Parse(A.Substring(0, 2));
             int month = int.Parse(A.Substring(2, 2));
@@ -39,12 +59,20 @@ namespace HetuTask
             {
                 DateTime d = new DateTime(year, month, day);
             }
-            catch (Exception ex)
+            catch 
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Päivämäärä on virheellinen");
+                return false;
             }
+            return true;
         }
 
+        /// <summary>
+        /// vertaa hetun viimeistä merkkiä tarkastemerkkiin
+        /// </summary>
+        /// <param name="letter1"></param>
+        /// <param name="letter2"></param>
+        /// <returns></returns>
         static bool FinalChecker(string letter1, string letter2)
         {
             if (letter2 == letter1)
