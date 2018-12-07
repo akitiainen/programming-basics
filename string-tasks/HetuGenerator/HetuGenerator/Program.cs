@@ -12,8 +12,10 @@ namespace HetuGenerator
                 date = Cleaner(date);
                 if (DateChecker(date))
                 {
+                    string dateTmp = date.Remove(4, 2);
                     string end = EndGenerator();
-                    Console.WriteLine(end);
+                    string checkMark = CheckMarkGenerator(dateTmp, end);
+                    PrintData(date, end, checkMark);
                     break;
                 }
             }
@@ -54,19 +56,46 @@ namespace HetuGenerator
         {
             Random end = new Random();
 
-            int[] endArray = new int[3];
+            string[] endArray = new string[3];
             for (int i = 0; i < 3; i++)
             {
-                if (endArray[i] == 0)
-                    endArray[i] = end.Next(9);
-                else if (endArray[i] == 1)
-                    endArray[i] = end.Next(10);
-                else
-                    endArray[i] = end.Next(2, 10);
+                endArray[i] = end.Next(10).ToString();
+                if (endArray[0] == "9")
+                    i--;
+                else if (endArray[2] == "0" || endArray[2] == "1")
+                    i--;
+   
+            }            
+            Console.WriteLine();
+            string endString = "";
+            for (int i = 0; i < 3; i++)
+            {
+                endString += endArray[i].ToString();
             }
-            return endArray.ToString();
+            return endString;
+        }       
+
+        static string CheckMarkGenerator(string date, string end)
+        {
+            string checkMarkList = "0123456789ABCDEFHJKLMNPRSTUVWXY";
+            string strHetu = date + end;
+            int hetuCheck = int.Parse(strHetu);
+            hetuCheck = hetuCheck % 31;
+            string x = checkMarkList[hetuCheck].ToString();
+            return x;
         }
 
-       
+        static void PrintData(string a, string b, string c)
+        {
+            int year = int.Parse(a.Substring(4));
+            string hetu;
+            if (year < 1900)
+                hetu = a.Remove(4,2) + "+" + b + c;
+            else if (year < 2000)
+                hetu = a.Remove(4,2) + "-" + b + c;
+            else
+                hetu = a.Remove(4,2) + "A" + b + c;
+            Console.WriteLine($"Henkilötunnuksesi on {hetu}");
+        }
     }
 }
