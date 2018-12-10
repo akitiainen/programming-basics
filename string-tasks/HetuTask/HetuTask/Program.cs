@@ -6,18 +6,37 @@ namespace HetuTask
     {
         static void Main(string[] args)
         {
-            do
+            switch (Operator())
             {
-                string strHetu = Intro();
-                if (DateChecker(strHetu))
-                {
-                    string check = HetuChecker(strHetu);
-                    bool isReal = (FinalChecker(check, strHetu.Substring(10)));
-                    PrintData(isReal);
+                case 1:
+                    {
+                        do
+                        {
+                            string strHetu = Intro();
+                            if (DateChecker(strHetu))
+                            {
+                                string check = HetuChecker(strHetu);
+                                bool isReal = (FinalChecker(check, strHetu.Substring(10)));
+                                PrintData(isReal);
+                                break;
+                            }
+                        }
+                        while (true);
+                    }
                     break;
-                }
+                case 2:
+                    {
+
+                    }
+                    break;
             }
-            while (true);
+            
+        }
+
+        static int Operator()
+        {
+            Console.WriteLine("1. Tarkastaa henkilötunnuksen oikeellisuuden.\n2. Henkilötunnusgeneraattori.");
+            return int.Parse(Console.ReadLine());
         }
 
         static string Intro()
