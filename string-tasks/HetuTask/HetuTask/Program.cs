@@ -10,14 +10,15 @@ namespace HetuTask
             {
                 case 1:
                     {
+                        Console.Clear();
                         do
                         {
-                            string strHetu = Intro();
+                            string strHetu = CheckIntro();
                             if (DateChecker(strHetu))
                             {
                                 string check = HetuChecker(strHetu);
                                 bool isReal = (FinalChecker(check, strHetu.Substring(10)));
-                                PrintData(isReal);
+                                PrintDataCheck(isReal);
                                 break;
                             }
                         }
@@ -26,7 +27,21 @@ namespace HetuTask
                     break;
                 case 2:
                     {
-
+                        Console.Clear();
+                        do
+                        {
+                            string date = GenIntro();
+                            date = Cleaner(date);
+                            if (DateChecker(date))
+                            {
+                                string dateTmp = date.Remove(4, 2);
+                                string end = EndGenerator();
+                                string checkMark = CheckMarkGenerator(dateTmp, end);
+                                PrintDataGen(date, end, checkMark);
+                                break;
+                            }
+                        }
+                        while (true);
                     }
                     break;
             }
@@ -38,8 +53,8 @@ namespace HetuTask
             Console.WriteLine("1. Tarkastaa henkilötunnuksen oikeellisuuden.\n2. Henkilötunnusgeneraattori.");
             return int.Parse(Console.ReadLine());
         }
-
-        static string Intro()
+        #region Checker
+        static string CheckIntro()
         {
             Console.Write("Syötä sosiaaliturvatunnus: ");
             return Console.ReadLine();
@@ -100,12 +115,75 @@ namespace HetuTask
                 return false;
         }
 
-        static void PrintData(bool data)
+        static void PrintDataCheck(bool data)
         {
             if(data)
                 Console.WriteLine("Hetu on oikea!");
             else
                 Console.WriteLine("Hetu on väärä!");
         }
+        #endregion
+
+        #region Generator
+
+        static string GenIntro()
+        {
+            Console.Write("Syötä syntymäpäivä muodossa pp/kk/vvvv: ");
+            return Console.ReadLine();
+        }
+
+        static string Cleaner(string x)
+        {
+            x = x.Replace("/", "");
+            return x;
+        }
+
+        static string EndGenerator()
+        {
+            Random end = new Random();
+
+            string[] endArray = new string[3];
+            for (int i = 0; i < 3; i++)
+            {
+                endArray[i] = end.Next(10).ToString();
+                if (endArray[0] == "9")
+                    i--;
+                else if (endArray[2] == "0" || endArray[2] == "1")
+                    i--;
+
+            }
+            Console.WriteLine();
+            string endString = "";
+            for (int i = 0; i < 3; i++)
+            {
+                endString += endArray[i].ToString();
+            }
+            return endString;
+        }
+
+        static string CheckMarkGenerator(string date, string end)
+        {
+            string checkMarkList = "0123456789ABCDEFHJKLMNPRSTUVWXY";
+            string strHetu = date + end;
+            int hetuCheck = int.Parse(strHetu);
+            hetuCheck = hetuCheck % 31;
+            string x = checkMarkList[hetuCheck].ToString();
+            return x;
+        }
+
+        static void PrintDataGen(string a, string b, string c)
+        {
+            int year = int.Parse(a.Substring(4));
+            string hetu;
+            if (year < 1900)
+                hetu = a.Remove(4, 2) + "+" + b + c;
+            else if (year < 2000)
+                hetu = a.Remove(4, 2) + "-" + b + c;
+            else
+                hetu = a.Remove(4, 2) + "A" + b + c;
+            Console.WriteLine($"Henkilötunnuksesi on {hetu}");
+        }
+        #endregion
     }
+
 }
