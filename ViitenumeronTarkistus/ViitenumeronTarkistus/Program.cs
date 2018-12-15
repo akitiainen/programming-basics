@@ -12,7 +12,8 @@ namespace ViitenumeronTarkistus
                 case 1:
                     Console.Clear();
                     string refNumber = Input();
-                    LOL(refNumber);
+                    string tmpRefNumber = Reverse(refNumber);
+                    LOL(tmpRefNumber);
                     break;
             }
         }
@@ -28,6 +29,13 @@ namespace ViitenumeronTarkistus
             return Console.ReadLine();
         }
 
+        static string Reverse(string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
+        }
+
         static void LOL(string x)
         {
             int[] list = new int[x.Length];
@@ -40,16 +48,17 @@ namespace ViitenumeronTarkistus
             {
                 if(i == 0)
                 {
-                    list[i] = list[i];
+                    list[i] = list[i] * 7;
                 }
                 else if(i == 1)
                 {
-                    list[i] = list[i] * 3; 
+                    list[i] = list[i] * 3;
                 }
                 else
                 {
-                    list[i] = list[i] * 7;
+                    list[i] = list[i];
                 }
+                
                 Console.WriteLine(list[i]);
             }
         }
