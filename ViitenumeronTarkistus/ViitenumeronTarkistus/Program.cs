@@ -11,9 +11,15 @@ namespace ViitenumeronTarkistus
             {
                 case 1:
                     Console.Clear();
-                    string refNumber = Input();
-                    string tmpRefNumber = Reverse(refNumber);
-                    LOL(tmpRefNumber);
+                    string refNumber = RefNumber();
+                    string tmpRefNumber = Reverse(refNumber.Substring(0,refNumber.Length-1));
+                    string checkNumber = CheckNumberCreator(tmpRefNumber);
+                    if (CheckNumberChecker(refNumber.Substring(refNumber.Length - 1, 1), checkNumber) == true)
+                    {
+                        PrintTrue(refNumber);
+                    }
+                    else
+                        PrintFalse();
                     break;
             }
         }
@@ -23,7 +29,7 @@ namespace ViitenumeronTarkistus
             Console.WriteLine("1. ohjelma tarkistaa kotimaisen viitenumeron\n2. luo kotimaisen viitenumeron\n3. luo halutun määrän viitenumeroita ja tallentaa ne tekstitiedostoon");
         }
 
-        static string Input()
+        static string RefNumber()
         {
             Console.Write("Syötä viitenumero: ");
             return Console.ReadLine();
@@ -36,8 +42,10 @@ namespace ViitenumeronTarkistus
             return new string(charArray);
         }
 
-        static void LOL(string x)
+        static string CheckNumberCreator(string x)
         {
+            string checkMark = string.Empty;
+            int sum = 0;
             int[] list = new int[x.Length];
             for (int i = 0; i < x.Length; i++)
             {
@@ -46,11 +54,11 @@ namespace ViitenumeronTarkistus
 
             for (int i = 0; i < list.Length; i++)
             {
-                if(i == 0)
+                if(i % 3 == 0)
                 {
                     list[i] = list[i] * 7;
                 }
-                else if(i == 1)
+                else if(i % 3 == 1)
                 {
                     list[i] = list[i] * 3;
                 }
@@ -58,9 +66,34 @@ namespace ViitenumeronTarkistus
                 {
                     list[i] = list[i];
                 }
-                
-                Console.WriteLine(list[i]);
             }
+
+            for (int i = 0; i < list.Length; i++)
+            {
+                sum = sum + list[i];
+            }
+
+            int difference = (int)(Math.Ceiling(sum / 10.0d)*10);
+            checkMark = (difference-sum).ToString();
+            return checkMark;
+        }
+
+        static bool CheckNumberChecker(string s1, string s2)
+        {
+            if (s1 == s2)
+                return true;
+            else
+                return false;
+        }
+
+        static void PrintTrue(string s)
+        {
+            Console.WriteLine($"{s} - OK");
+        }
+
+        static void PrintFalse()
+        {
+            Console.WriteLine("Viitenumero on väärin!");
         }
     }
 }
