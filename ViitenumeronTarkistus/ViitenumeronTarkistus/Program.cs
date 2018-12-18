@@ -21,6 +21,22 @@ namespace ViitenumeronTarkistus
                     else
                         PrintFalse();
                     break;
+
+                case 2:
+                    Console.Clear();
+                    string refNumberBase = Shit();
+                    tmpRefNumber = Reverse(refNumberBase);
+                    checkNumber = CheckNumberCreator(tmpRefNumber);
+                    refNumber = Conjoiner(refNumberBase, checkNumber);
+                    Console.WriteLine(refNumber);
+                    break;
+
+                case 3:
+                    Console.Clear();
+                    string basePart = Piss();
+                    int amount = Piss2();
+                    Console.WriteLine(amount);
+                    break;
             }
         }
 
@@ -33,6 +49,40 @@ namespace ViitenumeronTarkistus
         {
             Console.Write("Syötä viitenumero: ");
             return Console.ReadLine();
+        }
+
+        static string Shit()
+        {
+            Console.WriteLine("Kirjoita viitenumeron perusosa ilman tarkistenumeroa: ");
+            return Console.ReadLine();
+        }
+
+        static string Piss()
+        {
+            Console.WriteLine("Kirjoita viitenumeron perusosa: ");
+            return Console.ReadLine();
+        }
+
+        static int Piss2()
+        {
+            int i;
+            do
+            {
+                Console.Write("Kuinka monta viitenumeroa haluat luoda: ");
+                while (!int.TryParse(Console.ReadLine(), out i))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Syöte ei ole numero!");
+                    Console.Write("Kuinka monta viitenumeroa haluat luoda: ");
+                }
+                if(i < 1)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Luku ei voi olla pienempi kuin 1.");
+                }
+            }
+            while (i < 1);
+            return i;
         }
 
         static string Reverse(string s)
@@ -76,6 +126,11 @@ namespace ViitenumeronTarkistus
             int difference = (int)(Math.Ceiling(sum / 10.0d)*10);
             checkMark = (difference-sum).ToString();
             return checkMark;
+        }
+
+        static string Conjoiner(string s1, string s2)
+        {
+            return s1 + s2;
         }
 
         static bool CheckNumberChecker(string s1, string s2)
