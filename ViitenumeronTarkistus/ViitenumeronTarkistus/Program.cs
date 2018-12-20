@@ -28,7 +28,8 @@ namespace ViitenumeronTarkistus
                     tmpRefNumber = Reverse(refNumberBase);
                     checkNumber = CheckNumberCreator(tmpRefNumber);
                     refNumber = Conjoiner(refNumberBase, checkNumber);
-                    Console.WriteLine(refNumber);
+                    refNumber = SpaceMaker(refNumber);
+                    Console.WriteLine($"Viitenumerosi on {refNumber}.");
                     break;
 
                 case 3:
@@ -131,6 +132,16 @@ namespace ViitenumeronTarkistus
         static string Conjoiner(string s1, string s2)
         {
             return s1 + s2;
+        }
+
+        static string SpaceMaker(string s)
+        {
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (i >= 5 && i%5 == 0)
+                    s=s.Insert(s.Length-i, " ");                
+            }
+            return s;
         }
 
         static bool CheckNumberChecker(string s1, string s2)
