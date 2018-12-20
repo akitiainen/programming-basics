@@ -34,22 +34,22 @@ namespace ArrayAndFunctionTask3
 
         static void Addition(decimal d1, decimal d2)
         {
-            Console.WriteLine($"{d1} + {d2} = {(d1 + d2).ToString("F")}");
+            Console.WriteLine($"{d1.ToString("F")} + {d2.ToString("F")} = {(d1 + d2).ToString("F")}");
         }
 
         static void Substraction(decimal d1, decimal d2)
         {
-            Console.WriteLine($"{d1} - {d2} = {(d1 - d2).ToString("F")}");
+            Console.WriteLine($"{d1.ToString("F")} - {d2.ToString("F")} = {(d1 - d2).ToString("F")}");
         }
 
         static void Multiplication(decimal d1, decimal d2)
         {
-            Console.WriteLine($"{d1} * {d2} = {(d1 * d2).ToString("F")}");
+            Console.WriteLine($"{d1.ToString("F")} * {d2.ToString("F")} = {(d1 * d2).ToString("F")}");
         }
 
         static void Division(decimal d1, decimal d2)
         {
-            Console.WriteLine($"{d1} / {d2} = {(d1 / d2).ToString("F")}");
+            Console.WriteLine($"{d1.ToString("F")} / {d2.ToString("F")} = {(d1 / d2).ToString("F")}");
         }
     }
 }
