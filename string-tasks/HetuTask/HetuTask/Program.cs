@@ -32,9 +32,9 @@ namespace HetuTask
                         {
                             string date = GenIntro();
                             date = Cleaner(date);
-                            if (DateChecker(date))
+                            string dateTmp = date.Remove(4, 2);
+                            if (DateChecker(dateTmp))
                             {
-                                string dateTmp = date.Remove(4, 2);
                                 string end = EndGenerator();
                                 string checkMark = CheckMarkGenerator(dateTmp, end);
                                 PrintDataGen(date, end, checkMark);
