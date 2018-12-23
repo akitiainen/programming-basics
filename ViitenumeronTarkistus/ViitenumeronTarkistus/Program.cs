@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace ViitenumeronTarkistus
 {
@@ -14,6 +15,7 @@ namespace ViitenumeronTarkistus
                     string refNumber = RefNumber();
                     string tmpRefNumber = Reverse(refNumber.Substring(0,refNumber.Length-1));
                     string checkNumber = CheckNumberCreator(tmpRefNumber);
+                    refNumber = SpaceMaker(refNumber);
                     if (CheckNumberChecker(refNumber.Substring(refNumber.Length - 1, 1), checkNumber) == true)
                     {
                         PrintTrue(refNumber);
@@ -24,19 +26,41 @@ namespace ViitenumeronTarkistus
 
                 case 2:
                     Console.Clear();
-                    string refNumberBase = Shit();
+                    string refNumberBase = RefBase1();
                     tmpRefNumber = Reverse(refNumberBase);
                     checkNumber = CheckNumberCreator(tmpRefNumber);
                     refNumber = Conjoiner(refNumberBase, checkNumber);
                     refNumber = SpaceMaker(refNumber);
-                    Console.WriteLine($"Viitenumerosi on {refNumber}.");
+                    Console.Clear();
+                    Print2(refNumber);
                     break;
 
                 case 3:
                     Console.Clear();
-                    string basePart = Piss();
-                    int amount = Piss2();
-                    Console.WriteLine(amount);
+                    string basePart = RefBase2();
+                    int amount = Amount();
+                    string[] refNumberList = ListMaker(basePart, amount);
+                    string[] checkNumberList = new string[refNumberList.Length];
+                    for (int i = 0; i < refNumberList.Length; i++)
+                    {
+                        checkNumberList[i] = Reverse(refNumberList[i]);
+                    }
+                    for (int i = 0; i < refNumberList.Length; i++)
+                    {
+                        checkNumberList[i] = CheckNumberCreator(checkNumberList[i]);
+                    }
+                    for (int i = 0; i < refNumberList.Length; i++)
+                    {
+                        refNumberList[i] = refNumberList[i] + checkNumberList[i];
+                    }
+                    for (int i = 0; i < refNumberList.Length; i++)
+                    {
+                        refNumberList[i] = SpaceMaker(refNumberList[i]);
+                    }
+                    string path = @"C:\dev\TEMP\referencenumber.txt";
+                    FileMaker(refNumberList, path);
+                    Console.Clear();
+                    Print3(path);
                     break;
             }
         }
@@ -52,19 +76,19 @@ namespace ViitenumeronTarkistus
             return Console.ReadLine();
         }
 
-        static string Shit()
+        static string RefBase1()
         {
             Console.WriteLine("Kirjoita viitenumeron perusosa ilman tarkistenumeroa: ");
             return Console.ReadLine();
         }
 
-        static string Piss()
+        static string RefBase2()
         {
             Console.WriteLine("Kirjoita viitenumeron perusosa: ");
             return Console.ReadLine();
         }
 
-        static int Piss2()
+        static int Amount()
         {
             int i;
             do
@@ -136,10 +160,16 @@ namespace ViitenumeronTarkistus
 
         static string SpaceMaker(string s)
         {
+            int g = 0;
             for (int i = 0; i < s.Length; i++)
             {
-                if (i >= 5 && i%5 == 0)
-                    s=s.Insert(s.Length-i, " ");                
+                if (g > 2)
+                    break;
+                if (i >= 5 && i % 5 == 0)
+                {
+                    s = s.Insert(s.Length-i-g, " ");
+                    g = g+1;
+                }               
             }
             return s;
         }
@@ -152,6 +182,38 @@ namespace ViitenumeronTarkistus
                 return false;
         }
 
+        static string[] ListMaker(string s, int a)
+        {
+            string[] list = new string[a];
+            for (int i = 0; i < a; i++)
+            {
+                list[i] = s + (i+1).ToString();
+            }
+            return list;
+        }
+
+        static void FileMaker(string[] a, string path)
+        {
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (!File.Exists(path))
+                {
+                    File.Create(path).Dispose();
+                    using (TextWriter tw = new StreamWriter(path))
+                    {
+                        tw.WriteLine(a[i]);
+                    }
+                }
+                else if (File.Exists(path))
+                {
+                    using (var tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine(a[i]);
+                    }
+                }
+            }
+        }
+
         static void PrintTrue(string s)
         {
             Console.WriteLine($"{s} - OK");
@@ -160,6 +222,21 @@ namespace ViitenumeronTarkistus
         static void PrintFalse()
         {
             Console.WriteLine("Viitenumero on väärin!");
+        }
+
+        static void Print2(string s)
+        {
+            Console.WriteLine($"Viitenumerosi on {s}.");
+        }
+
+        static void Print3(string p)
+        {
+            string[] lines = File.ReadAllLines(p);
+            Console.WriteLine("Uudet viitenumerosi:\n");
+            foreach (string line in lines)
+            {
+                Console.WriteLine(line);
+            }
         }
     }
 }
