@@ -13,6 +13,8 @@ namespace ViitenumeronTarkistus
                 case 1:
                     Console.Clear();
                     string refNumber = RefNumber();
+                    if (LengthChecker(refNumber) == false)
+                        break;
                     string tmpRefNumber = Reverse(refNumber.Substring(0,refNumber.Length-1));
                     string checkNumber = CheckNumberCreator(tmpRefNumber);
                     refNumber = SpaceMaker(refNumber);
@@ -27,6 +29,8 @@ namespace ViitenumeronTarkistus
                 case 2:
                     Console.Clear();
                     string refNumberBase = RefBase1();
+                    if (LengthChecker1(refNumberBase) == false)
+                        break;
                     tmpRefNumber = Reverse(refNumberBase);
                     checkNumber = CheckNumberCreator(tmpRefNumber);
                     refNumber = Conjoiner(refNumberBase, checkNumber);
@@ -38,6 +42,8 @@ namespace ViitenumeronTarkistus
                 case 3:
                     Console.Clear();
                     string basePart = RefBase2();
+                    if (LengthChecker1(basePart) == false)
+                        break;
                     int amount = Amount();
                     string[] refNumberList = ListMaker(basePart, amount);
                     string[] checkNumberList = new string[refNumberList.Length];
@@ -212,6 +218,28 @@ namespace ViitenumeronTarkistus
                     }
                 }
             }
+        }
+
+        static bool LengthChecker(string s)
+        {
+            if (s.Length < 4 || s.Length > 20)
+            {
+                Console.WriteLine("Viitenumerosi ei ole sopivan pituinen!");
+                return false;
+            }
+            else
+                return true;
+        }
+
+        static bool LengthChecker1(string s)
+        {
+            if (s.Length < 3 || s.Length > 19)
+            {
+                Console.WriteLine("Viitenumerosi ei ole sopivan pituinen!");
+                return false;
+            }
+            else
+                return true;
         }
 
         static void PrintTrue(string s)
